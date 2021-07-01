@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.arimbimega.sportlinenews.Adapter.SportAdapter;
 import com.arimbimega.sportlinenews.Model.Articles;
 import com.arimbimega.sportlinenews.Model.SportModel;
 import com.arimbimega.sportlinenews.Retrofit.APIService;
+import com.arimbimega.sportlinenews.Webview.DetailSportActivity;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showSelectedItem (Articles articles){
+        Intent intent = new Intent(MainActivity.this, DetailSportActivity.class);
+        intent.putExtra("articlesArrayList", articles);
+        startActivity(intent);
+
+    }
+
     private  void getSportModel(){
         APIService.endPoint().getSportModel()
                 .enqueue(new Callback<SportModel>() {
@@ -59,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
                             sportAdapter = new SportAdapter(articlesArrayList);
                             sportAdapter.notifyDataSetChanged();
                             mRecyclerView.setAdapter(sportAdapter);
+
+                            sportAdapter.setOnItemClickCallback(new SportAdapter.OnItemClickCallback() {
+                                @Override
+                                public void onItemClicked(Articles data) {
+                                    showSelectedItem(data);
+                                }
+                            });
 
                         }
                     }
