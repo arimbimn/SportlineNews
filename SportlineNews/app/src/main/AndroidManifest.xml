@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SportlineNews"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Webview.DetailSportActivity"></activity>
+        <activity android:name=".SplashScreen.SplashScreenActivity" android:theme="@style/SplashScreenStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Webview.DetailSportActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
