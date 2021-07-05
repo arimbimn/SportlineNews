@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
 
 import com.arimbimega.sportlinenews.MainActivity;
 import com.arimbimega.sportlinenews.R;
@@ -24,7 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 1000);
 
     }
 }

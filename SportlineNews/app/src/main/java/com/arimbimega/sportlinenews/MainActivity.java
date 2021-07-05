@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private void showSelectedItem (Articles articles){
         Intent intent = new Intent(MainActivity.this, DetailSportActivity.class);
         intent.putExtra("articlesArrayList", articles);
+        intent.putExtra("sourceArrayList", articles.getSource());
         startActivity(intent);
 
     }

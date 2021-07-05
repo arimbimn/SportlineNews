@@ -13,6 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.arimbimega.sportlinenews.Model.Articles;
+import com.arimbimega.sportlinenews.Model.Source;
 import com.arimbimega.sportlinenews.R;
 
 public class DetailSportActivity extends AppCompatActivity {
@@ -30,6 +31,9 @@ public class DetailSportActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Articles articles = getIntent().getParcelableExtra("articlesArrayList");
+        Source source = getIntent().getParcelableExtra("sourceArrayList");
+        this.getSupportActionBar().setTitle(source.getName());
+        this.getSupportActionBar().setSubtitle(articles.getTitle());
         UrlNews = articles.getUrl();
 
         progressBar = findViewById(R.id.progressbar);
