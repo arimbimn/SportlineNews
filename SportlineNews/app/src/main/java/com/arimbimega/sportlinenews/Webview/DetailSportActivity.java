@@ -42,6 +42,9 @@ public class DetailSportActivity extends AppCompatActivity {
         webView = findViewById(R.id.webview);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setLoadsImagesAutomatically(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
 
         webView.setWebViewClient(new Callback());
         webView.loadUrl(UrlNews);

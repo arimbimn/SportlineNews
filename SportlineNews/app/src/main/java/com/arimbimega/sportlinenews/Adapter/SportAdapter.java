@@ -39,13 +39,26 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ListViewHold
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull SportAdapter.ListViewHolder holder, int position) {
 
+        if (articlesArrayList.get(position).getUrlToImage() == null){
+            holder.imgItemSport.setImageResource(R.drawable.ic_not_supported);
+
+        } else {
+            Glide.with(holder.itemView.getContext())
+                    .load(articlesArrayList.get(position).getUrlToImage())
+                    .into(holder.imgItemSport);
+
+        }
+
+        if(articlesArrayList.get(position).getAuthor() == null){
+            holder.tvSportPub.setText(articlesArrayList.get(position).getSource().getName());
+
+        } else {
+            holder.tvSportPub.setText(articlesArrayList.get(position).getAuthor() + "\u2022" + articlesArrayList.get(position).getSource().getName());
+        }
+
         holder.tvSportTglPub.setText(articlesArrayList.get(position).getPublishedAt());
         holder.tvSportTitle.setText(articlesArrayList.get(position).getTitle());
-        holder.tvSportPub.setText(articlesArrayList.get(position).getSource().getName());
         holder.tvSportDesc.setText(articlesArrayList.get(position).getDescription());
-        Glide.with(holder.itemView.getContext())
-                .load(articlesArrayList.get(position).getUrlToImage())
-                .into(holder.imgItemSport);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

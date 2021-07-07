@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arimbimega.sportlinenews.Adapter.SportAdapter;
 import com.arimbimega.sportlinenews.Model.Articles;
@@ -23,7 +22,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-//    TextView tvTitleTest, tvPubtest, tvDesctest;
 
     private RecyclerView mRecyclerView;
     private SportAdapter sportAdapter;
@@ -32,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        tvTitleTest = findViewById(R.id.titleTest);
-//        tvPubtest = findViewById(R.id.pubTest);
-//        tvDesctest = findViewById(R.id.descTest);
 
         mRecyclerView =findViewById(R.id.rvSport);
         mRecyclerView.setHasFixedSize(true);
@@ -62,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                         if (response.isSuccessful()){
 
-//                        tvTitleTest.setText(response.body().getArticlesArrayList().get(0).getTitle());
-//                        tvPubtest.setText(response.body().getArticlesArrayList().get(0).getSource().getName());
-//                        tvDesctest.setText(response.body().getArticlesArrayList().get(0).getDescription());
-
                             ArrayList<Articles> articlesArrayList = response.body().getArticlesArrayList();
                             sportAdapter = new SportAdapter(articlesArrayList);
                             sportAdapter.notifyDataSetChanged();
@@ -83,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SportModel> call, Throwable t) {
+
+                        Toast.makeText(MainActivity.this,"Oops, jaringan kamu bermasalah.", Toast.LENGTH_SHORT).show();
 
                     }
                 });
