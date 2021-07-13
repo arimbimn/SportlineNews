@@ -6,12 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#dfdfdf"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:nestedScrollingEnabled="true"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSport"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_sport"/>
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_sport"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

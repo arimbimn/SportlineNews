@@ -3,9 +3,11 @@ package com.arimbimega.sportlinenews;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 import com.arimbimega.sportlinenews.Adapter.SportAdapter;
@@ -26,15 +28,34 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private SportAdapter sportAdapter;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        this.getSupportActionBar().setTitle("Berita Olahraga Terkini");
 
+        swipeRefreshLayout = findViewById(R.id.swiperefresh);
         mRecyclerView =findViewById(R.id.rvSport);
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getSportModel();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(MainActivity.this, "Data sudah paling baru", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1000);
+            }
+        });
 
         getSportModel();
 
