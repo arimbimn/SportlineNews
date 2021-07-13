@@ -16,7 +16,12 @@ import com.arimbimega.sportlinenews.Model.SportModel;
 import com.arimbimega.sportlinenews.Retrofit.APIService;
 import com.arimbimega.sportlinenews.Webview.DetailSportActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.getSupportActionBar().setTitle("Berita Olahraga Terkini");
+
+        DateFormat df = new SimpleDateFormat("d MMM yyyy | HH:mm", Locale.getDefault());
+        String date = df.format(Calendar.getInstance().getTime());
+        this.getSupportActionBar().setSubtitle("Hari ini, " + date);
 
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
         mRecyclerView =findViewById(R.id.rvSport);
