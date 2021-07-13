@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.arimbimega.sportlinenews.Model.Articles;
 import com.arimbimega.sportlinenews.R;
+import com.arimbimega.sportlinenews.Setting.TimeUnits;
 import com.bumptech.glide.Glide;
+
 
 import java.util.ArrayList;
 
@@ -39,8 +41,8 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ListViewHold
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull SportAdapter.ListViewHolder holder, int position) {
 
-        if (articlesArrayList.get(position).getUrlToImage() == null){
-            holder.imgItemSport.setImageResource(R.drawable.ic_not_supported);
+        if (articlesArrayList.get(position).getUrlToImage() == null) {
+            holder.imgItemSport.setImageResource(R.drawable.ic_no_image);
 
         } else {
             Glide.with(holder.itemView.getContext())
@@ -49,14 +51,14 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ListViewHold
 
         }
 
-        if(articlesArrayList.get(position).getAuthor() == null){
+        if (articlesArrayList.get(position).getAuthor() == null) {
             holder.tvSportPub.setText(articlesArrayList.get(position).getSource().getName());
 
         } else {
-            holder.tvSportPub.setText(articlesArrayList.get(position).getAuthor() + "\u2022" + articlesArrayList.get(position).getSource().getName());
+            holder.tvSportPub.setText(articlesArrayList.get(position).getAuthor() + " \u2022 " + articlesArrayList.get(position).getSource().getName());
         }
 
-        holder.tvSportTglPub.setText(articlesArrayList.get(position).getPublishedAt());
+        holder.tvSportTglPub.setText(TimeUnits.getTimeAgo(articlesArrayList.get(position).getPublishedAt()));
         holder.tvSportTitle.setText(articlesArrayList.get(position).getTitle());
         holder.tvSportDesc.setText(articlesArrayList.get(position).getDescription());
 

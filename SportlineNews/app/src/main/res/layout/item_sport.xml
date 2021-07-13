@@ -3,49 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/item_imgSport"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:src="@tools:sample/avatars"/>
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/item_tglPub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="8sp"
-        android:text="Tanggal Publikasi"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="#dfdfdf"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/item_judulBerita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Judul Berita"/>
+            <ImageView
+                android:id="@+id/item_imgSport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:src="@tools:sample/avatars"/>
 
-    <TextView
-        android:id="@+id/item_penerbitBerita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="Penerbit Berita"/>
+            <TextView
+                android:id="@+id/item_tglPub"
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/app_color"
+                android:text="Tanggal Publikasi"/>
 
-    <TextView
-        android:id="@+id/item_descBerita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deskripsi Berita"/>
+            <TextView
+                android:id="@+id/item_judulBerita"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/app_color"
+                android:text="Judul Berita"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="10dp"
-        android:background="@color/app_color"/>
+            <TextView
+                android:id="@+id/item_penerbitBerita"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="italic"
+                android:textColor="@color/app_color"
+                android:text="Penerbit Berita"/>
+
+            <TextView
+                android:id="@+id/item_descBerita"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="15sp"
+                android:textColor="@color/app_color"
+                android:text="Deskripsi Berita"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_color"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
