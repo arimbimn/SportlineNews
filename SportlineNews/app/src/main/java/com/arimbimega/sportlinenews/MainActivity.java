@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,15 +35,23 @@ public class MainActivity extends AppCompatActivity {
     private SportAdapter sportAdapter;
 
     SwipeRefreshLayout swipeRefreshLayout;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Mohon tunggu");
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Sedang menampilkan data");
+        progressDialog.show();
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.getSupportActionBar().setTitle("Berita Olahraga Terkini");
 
-        DateFormat df = new SimpleDateFormat("d MMM yyyy | HH:mm", Locale.getDefault());
+        DateFormat df = new SimpleDateFormat("d MMM yyyy", Locale.getDefault());
         String date = df.format(Calendar.getInstance().getTime());
         this.getSupportActionBar().setSubtitle("Hari ini, " + date);
 
@@ -86,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (response.isSuccessful()){
 
+                            progressDialog.dismiss();
                             ArrayList<Articles> articlesArrayList = response.body().getArticlesArrayList();
                             sportAdapter = new SportAdapter(articlesArrayList);
                             sportAdapter.notifyDataSetChanged();
@@ -104,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<SportModel> call, Throwable t) {
 
+                        progressDialog.dismiss();
                         Toast.makeText(MainActivity.this,"Oops, jaringan kamu bermasalah.", Toast.LENGTH_SHORT).show();
 
                     }
