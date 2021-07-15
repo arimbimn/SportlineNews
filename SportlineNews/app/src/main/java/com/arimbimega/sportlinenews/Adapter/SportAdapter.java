@@ -40,7 +40,6 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ListViewHold
 
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull SportAdapter.ListViewHolder holder, int position) {
-
         if (articlesArrayList.get(position).getUrlToImage() == null) {
             holder.imgItemSport.setImageResource(R.drawable.ic_no_image);
 

@@ -29,16 +29,8 @@
                 tools:src="@tools:sample/avatars"/>
 
             <TextView
-                android:id="@+id/item_tglPub"
-                android:paddingTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/app_color"
-                android:text="Tanggal Publikasi"/>
-
-            <TextView
                 android:id="@+id/item_judulBerita"
+                android:paddingTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="20sp"
@@ -47,20 +39,31 @@
                 android:text="Judul Berita"/>
 
             <TextView
-                android:id="@+id/item_penerbitBerita"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textStyle="italic"
-                android:textColor="@color/app_color"
-                android:text="Penerbit Berita"/>
-
-            <TextView
                 android:id="@+id/item_descBerita"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15sp"
-                android:textColor="@color/app_color"
+                android:textColor="#808080"
                 android:text="Deskripsi Berita"/>
+
+            <TextView
+                android:id="@+id/item_penerbitBerita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:text="Penerbit Berita"/>
+
+            <TextView
+                android:id="@+id/item_tglPub"
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/app_color"
+                android:text="Tanggal Publikasi"/>
+
 
             <View
                 android:layout_width="match_parent"

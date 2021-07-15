@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.arimbimega.sportlinenews.Adapter.SportAdapter;
@@ -21,7 +22,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -51,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.getSupportActionBar().setTitle("Berita Olahraga Terkini");
 
-        DateFormat df = new SimpleDateFormat("d MMM yyyy", Locale.getDefault());
+        Locale locale = new java.util.Locale("id","ID","id-ID");
+        DateFormat df = new SimpleDateFormat("EEEE, d MMMM yyyy", locale);
         String date = df.format(Calendar.getInstance().getTime());
-        this.getSupportActionBar().setSubtitle("Hari ini, " + date);
+        this.getSupportActionBar().setSubtitle("Hari ini " + date);
 
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
         mRecyclerView =findViewById(R.id.rvSport);
@@ -97,7 +98,24 @@ public class MainActivity extends AppCompatActivity {
 
                             progressDialog.dismiss();
                             ArrayList<Articles> articlesArrayList = response.body().getArticlesArrayList();
-                            sportAdapter = new SportAdapter(articlesArrayList);
+                            ArrayList<Articles> articleBaru = new ArrayList<>();
+
+                            for(Articles article : articlesArrayList){
+                                Log.d("cek", "Nama Isi Array" + article.getSource().getName());
+                                Log.d("cek", "Nama judul Array" + article.getTitle());
+
+                                if(article.getSource().getName().equals("Bola.net")){
+                                    continue;
+                                } else if (article.getSource().getName().equals("Google News")) {
+                                    continue;
+                                } else if (article.getSource().getName().equals("Tribunnews.com")){
+                                    continue;
+                                }
+                                articleBaru.add(article);
+
+                            }
+
+                            sportAdapter = new SportAdapter(articleBaru);
                             sportAdapter.notifyDataSetChanged();
                             mRecyclerView.setAdapter(sportAdapter);
 

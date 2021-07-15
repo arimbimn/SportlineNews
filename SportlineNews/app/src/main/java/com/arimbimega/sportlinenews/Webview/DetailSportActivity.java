@@ -3,6 +3,7 @@ package com.arimbimega.sportlinenews.Webview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -22,8 +23,10 @@ public class DetailSportActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
-    String UrlNews;
+    String UrlNews = "https://www.google.com";
 
+
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,11 @@ public class DetailSportActivity extends AppCompatActivity {
         webSettings.setLoadsImagesAutomatically(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setDefaultTextEncodingName("utf-8");
 
         webView.setWebViewClient(new Callback());
         webView.loadUrl(UrlNews);
