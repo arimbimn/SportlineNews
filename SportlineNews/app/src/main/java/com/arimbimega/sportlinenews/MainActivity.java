@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
                                     continue;
                                 } else if (article.getSource().getName().equals("Tribunnews.com")){
                                     continue;
+                                } else if (article.getSource().getName().equals("Bola.com")) {
+                                    continue;
                                 }
                                 articleBaru.add(article);
 
