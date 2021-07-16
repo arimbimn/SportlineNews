@@ -1,12 +1,12 @@
 # SportlineNews Alpha Testing Dokumentation
 
-### Date
+## Date
 Friday, 16 July 2021
 
-### Tester
+## Tester
 - Name : Muhammad Riza Farhandhy
 - Occupation : College Student
 - Age : 22 years old
 
-### Video
+## Video Documentation
 Youtube : https://youtu.be/Gxwtip7K9yc
