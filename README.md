@@ -5,3 +5,6 @@ SportlineNews is an application where users can find news about sports. In this 
 ## Advance Topic
 - REST API to retrieve up-to-date news
 - WebView to display the news web page
+
+## Playstore Link
+Link : https://play.google.com/apps/internaltest/4699008522750457701
