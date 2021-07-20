@@ -7,4 +7,4 @@ SportlineNews is an application where users can find news about sports. In this 
 - WebView to display the news web page
 
 ## Playstore Link
-Link : https://play.google.com/apps/internaltest/4699008522750457701
+Link : https://play.google.com/store/apps/details?id=com.arimbimega.sportlinenews
